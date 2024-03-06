@@ -10,32 +10,19 @@ import java.sql.SQLException;
 
 public class Application {
     public static void main(String[] args) throws SQLException, IOException {
-        String dbName = "test_db"; //TODO
-        String userName = "postgres"; //TODO
-        String password = "Time is not real"; //TODO
-
+        String dbName = "test_db";
+        String userName = "postgres";
+        String password = "Time is not real";
         String URL = "jdbc:postgresql://localhost:5432/" + dbName;
+        String sqlFilePath = "dinos-longer-10.sql";
 
-        Database database = new Database(
-                URL,
-                userName,
-                password);
-
-
-        Connection databaseConnection = database.getConnection();
-        String sql = Files.readString(Paths.get("dinos-longer-10.sql"));
-        PreparedStatement preparedStatement = databaseConnection.prepareStatement("SELECT * FROM dinos");
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while (resultSet.next()) {
-            String dinoName = resultSet.getString("name");
-            System.out.println(dinoName);
-
-            String dinoHeight = resultSet.getString("height");
-            System.out.println(dinoHeight);
-
-            String dinoLength = resultSet.getString("length");
-            System.out.println(dinoLength);
+        try {
+            Database connector = new Database(URL, userName, password);
+            Connection connection = connector.connect();
+            QueryExecutor executor = new QueryExecutor(connection);
+            executor.executeQuery(sqlFilePath);
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
         }
     }
 }
