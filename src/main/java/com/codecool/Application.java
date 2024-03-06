@@ -12,7 +12,8 @@ public class Application {
     public static void main(String[] args) throws SQLException, IOException {
         String dbName = "test_db";
         String userName = "postgres";
-        String password = "Time is not real";
+        String password = "1234";
+
         String URL = "jdbc:postgresql://localhost:5432/" + dbName;
         String sqlFilePath = "dinos-longer-10.sql";
 
