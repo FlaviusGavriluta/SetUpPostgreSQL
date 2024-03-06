@@ -15,8 +15,7 @@ public class Database {
         this.password = password;
     }
 
-
-    public Connection getConnection() {
+    public Connection connect() {
         try {
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException ex) {
