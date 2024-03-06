@@ -15,7 +15,6 @@ public class Database {
         this.password = password;
     }
 
-
     public Connection getConnection() {
         try {
             return DriverManager.getConnection(url, username, password);

@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class Application {
     public static void main(String[] args) throws SQLException {
-        String dbName = ""; //TODO
-        String userName = ""; //TODO
-        String password = ""; //TODO
+        String dbName = "test_db"; //TODO
+        String userName = "postgres"; //TODO
+        String password = "Time is not real"; //TODO
 
         String URL = "jdbc:postgresql://localhost:5432/" + dbName;
 
